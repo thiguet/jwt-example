@@ -23,16 +23,23 @@ class App extends React.Component {
   handleClick() {
     const login = this.state.login.value;
     const pass  = this.state.pass.value;
-    alert( 'Login :' + 
-            login + 
-           'Senha (Length) :' + 
-            pass.length);
+    
+    const loginData = {
+      user: login,
+      pass: pass
+    }; 
+
+    console.log(loginData);
+
     fetch('http://localhost:3004/login', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       method: 'POST',
-      body: {
-        login: login,
-        pass: pass
-      }
+      body: JSON.stringify(loginData)
+    }).then(resp => resp.json()).then((resp) => {
+      alert(resp.message);
     })  
   }
 
