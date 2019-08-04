@@ -1,71 +1,33 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+
+import Login from './views/Login/Login.jsx';
+import Users from './views/Users/Users.jsx';
+import { Route } from 'react-router-dom';
 import './App.css';
-
-import TextInput from './components/TextInput/TextInput';
-import PasswordInput from './components/PasswordInput/PasswordInput';
-import Button from './components/Button/Button';
-
+import Header from './components/Header/Header.jsx';
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: {
-        value: ''
-      },
-      pass: {
-        value: ''
-      }
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    const login = this.state.login.value;
-    const pass  = this.state.pass.value;
-    
-    const loginData = {
-      user: login,
-      pass: pass
-    }; 
-
-    console.log(loginData);
-
-    fetch('http://localhost:3004/login', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(loginData)
-    }).then(resp => resp.json()).then((resp) => {
-      alert(resp.message);
-    })  
-  }
-
-  render() {
-    const { login, pass } = this.state;
-    return (
-      <div className="App">
-        <header>
-          <h1>Simple Auth</h1>
-        </header>
-        <main>
-          <article className="main-article">
-            <TextInput 
-              label="Login"
-              inputData={login}>
-            </TextInput>
-            <PasswordInput
-              label="Password"
-              inputData={pass}>
-            </PasswordInput>
-            <Button onClick={this.handleClick}>Acess</Button>
-          </article>
-        </main>
-      </div>
-    );
-  }
+	render() {
+		const { loginInfo } = this.props;
+		return (
+			<div className="App">
+				<Header />
+				<h2> { this.props.userName } </h2>
+				<main>
+					{
+						!!loginInfo.tk 
+							? <Route exact path="/users" component={ Users } />
+							: <Route exact path="/" component={ Login } />						
+					}
+				</main>
+			</div>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = store => ({
+	loginInfo: store.loginState.loginInfo
+});
+
+export default connect(mapStateToProps)(App);

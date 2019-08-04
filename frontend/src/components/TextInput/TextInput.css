@@ -1,8 +1,3 @@
-.text-input-container {
-    width: 100%;
-    text-align: start;    
-}
-
 .text-input {   
     width: 100%;
     border: none;
@@ -18,11 +13,6 @@
     transform: scale(1.2);
 }
 
-
-.text-input-container label span:after{
-    content: ' :';
-}
-
-.text-input-container  .text-input:focus .text-input-container {
+.input-container  .text-input:focus .input-container {
     transform: scale(1.2);
 }

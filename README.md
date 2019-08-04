@@ -19,13 +19,6 @@ cd jwt_example/backend
 npm install
 node index.js
 ```
-
-For production environments...
-
-```sh
-npm install --production
-NODE_ENV=production 
-```
    [NodeJS]: <http://nodejs.org>
    [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
    [Express]: <http://expressjs.com>

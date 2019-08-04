@@ -1,39 +1,18 @@
 import React from 'react';
 import './TextInput.css';
+import InputContainer from '../InputContainer/InputContainer';
 
-class TextInput extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-        this.state.inputData = props.inputData || {};
-        this.handleChange = this.handleChange.bind(this);
-    }
-    
-    handleChange(evt) {
-        // Gambiarra que garante a atualização do value do componente pai.
-        this.props.inputData.value = evt.target.value; 
-        this.setState({
-            inputData: {
-                value: evt.target.value
-            }
-        });
-    }
-
-    render() {
-        const { label } = this.props;
-        const { value } = this.state.inputData;
-        return (
-            <div className="text-input-container">
-                <label>
-                    <span>{ label }</span>
-                    <input type="text" 
-                        value={ value }
-                        className="text-input"
-                        onChange={ this.handleChange } />
-                </label>
-            </div>
-        );
-    }
+let TextInput = props => {
+    const { label, onChange, value, name } = props;
+    return (
+        <InputContainer label={ label } >
+            <input type="text" 
+                   className="text-input"
+                   name={ name }
+                   onChange={ onChange }
+                   value={ value } />
+        </InputContainer> 
+    );
 }
 
 export default TextInput;

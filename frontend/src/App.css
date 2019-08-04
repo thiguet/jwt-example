@@ -2,6 +2,7 @@ html {
   background: #333; 
   color: #bf068a;
   user-select: none;
+  font-family: 'Comic Sans', sans-serif;
 }
 
 .App {
@@ -36,22 +37,4 @@ html {
   to {
     transform: rotate(360deg);
   }
-}
-
-.main-article {
-  text-align: center; 
-  width: 70%;
-  margin-left: 15%;
-  margin-top: 100px;
-}
-
-.main-article .text-input-container {
-  margin-top: 35px;
-}
-.main-article .button {
-  margin-top: 20px;
-}
-
-.text-input-container .text-input:focus .text-input-container{
-  transform: scale(1.2);
 }

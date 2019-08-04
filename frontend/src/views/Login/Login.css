@@ -1,0 +1,18 @@
+.main-article {
+    text-align: center;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 100px;
+}
+
+.main-article .input-container {
+    margin-top: 35px;
+}
+
+.main-article .button {
+    margin-top: 20px;
+}
+
+.text-input-container .text-input:focus .input-container {
+    transform: scale(1.2);
+}

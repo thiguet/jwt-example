@@ -1,0 +1,8 @@
+.input-container {
+    width: 100%;
+    text-align: start;    
+}
+
+.input-container label span:after {
+    content: ' :';
+}
